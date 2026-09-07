@@ -85,6 +85,17 @@
   a{color:inherit}
   img{max-width:100%}
 
+  /* Fine editorial grain — barely-there tooth over the flat ground */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  :root[data-theme="dark"] body::before,:root:not([data-theme="light"]) body::before{mix-blend-mode:screen;opacity:.06}
+  header.nav,main,footer{position:relative;z-index:1}
+
+  /* Reveal on scroll — resting state is fully visible; JS only adds the pre-animation offset */
+  .reveal-on.reveal{opacity:0;transform:translateY(14px)}
+  .reveal-on.reveal.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  @media(prefers-reduced-motion:reduce){.reveal-on.reveal{opacity:1;transform:none;transition:none}}
+
   .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--bg);padding:.6rem 1rem;z-index:100;border-radius:0 0 6px 0}
   .skip:focus{left:0}
 
@@ -384,13 +395,13 @@
     </div>
     <div class="gallery">
       <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_5011ff0f40664f628cd10ff84712e3f4~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_5011ff0f40664f628cd10ff84712e3f4~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
-      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg'),linear-gradient(205deg,var(--brand),color-mix(in srgb,var(--blush) 45%,var(--surface-2)))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg'),linear-gradient(140deg,var(--brand-deep),var(--surface-2))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg'),linear-gradient(175deg,var(--surface-2),color-mix(in srgb,var(--blush) 40%,var(--surface-2)))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg'),linear-gradient(155deg,var(--brand),var(--surface-2))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg'),linear-gradient(210deg,var(--brand-deep),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg'),linear-gradient(145deg,color-mix(in srgb,var(--blush) 45%,var(--surface-2)),var(--surface-2))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg'),linear-gradient(165deg,var(--surface-2),var(--brand-deep))"></div>
     </div>
     <p style="margin-top:1rem;font-size:.78rem;color:var(--muted)">Individual results vary. Photos shown are of real clients and models.</p>
   </section>
@@ -494,5 +505,21 @@
       root.setAttribute('data-theme', next);
       try{ localStorage.setItem('sma-theme', next); }catch(e){}
     });
+  })();
+
+  // Scroll reveal — only engages when motion is allowed and IO is supported.
+  // Content stays fully visible otherwise (resting state = visible).
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce || !('IntersectionObserver' in window)) return;
+    // Hero is the first frame — it stays at rest. Reveal only below-the-fold blocks.
+    var targets = document.querySelectorAll('.sec-head, .founder-grid, .plate, .quote, .shot, .band .wrap');
+    targets.forEach(function(el){ el.classList.add('reveal-on','reveal'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    targets.forEach(function(el){ io.observe(el); });
   })();
 </script>
