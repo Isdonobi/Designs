@@ -127,12 +127,37 @@
   .hero-aside p{margin:0 0 1.6rem}
   .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
   .hero-plate{margin-top:clamp(2.5rem,5vw,4rem);height:clamp(240px,42vw,440px);border-radius:14px;
-    background:
+    background-image:
+      url("https://static.wixstatic.com/media/11062b_9440bf4f1eb44619b23b478f8a274e5f~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_85,enc_avif,quality_auto/11062b_9440bf4f1eb44619b23b478f8a274e5f~mv2.jpg"),
       radial-gradient(120% 140% at 78% 12%,color-mix(in srgb,var(--blush) 42%,var(--surface)) 0%,transparent 46%),
       linear-gradient(150deg,var(--surface-2),var(--brand));
+    background-size:cover;background-position:center 28%;
     box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .hero-plate::after{content:"Natural results, non-surgical care";position:absolute;left:1.4rem;bottom:1.2rem;
-    font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 70%,transparent);font-weight:600}
+  .hero-plate::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,17,14,.45),transparent 45%)}
+  .hero-plate::after{content:"Natural results, non-surgical care";position:absolute;left:1.4rem;bottom:1.2rem;z-index:1;
+    font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:#fff;font-weight:600}
+
+  /* Press logos */
+  .featured{border-bottom:1px solid var(--line);background:var(--surface)}
+  .featured .wrap{padding-block:clamp(2.2rem,4vw,3rem)}
+  .featured p.eyebrow{text-align:center;margin-bottom:1.8rem}
+  .logos{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem;align-items:center;justify-items:center}
+  @media(min-width:620px){.logos{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:960px){.logos{grid-template-columns:repeat(6,1fr)}}
+  .logos .logo{height:38px;width:100%;background-repeat:no-repeat;background-position:center;background-size:contain;
+    opacity:.62;filter:grayscale(1);transition:opacity .2s}
+  .logos .logo:hover{opacity:1}
+  :root:not([data-theme="light"]) .logos .logo{filter:grayscale(1) invert(1) brightness(1.6)}
+  @media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .logos .logo{filter:grayscale(1) invert(0)}}
+  :root[data-theme="dark"] .logos .logo{filter:grayscale(1) invert(1) brightness(1.6)}
+  :root[data-theme="light"] .logos .logo{filter:grayscale(1) invert(0)}
+
+  /* Results gallery */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+  @media(min-width:680px){.gallery{grid-template-columns:repeat(4,1fr)}}
+  .gallery .shot{aspect-ratio:3/4;border-radius:10px;overflow:hidden;background-size:cover;background-position:center;
+    background-image:linear-gradient(160deg,var(--surface-2),var(--brand));transition:transform .3s}
+  .gallery .shot:hover{transform:scale(1.02)}
 
   /* ---------- Marquee ---------- */
   .marquee{border-block:1px solid var(--line);overflow:hidden;padding:.9rem 0;background:var(--surface)}
@@ -156,11 +181,16 @@
   .founder{background:var(--surface);border-block:1px solid var(--line)}
   .founder-grid{display:grid;grid-template-columns:1fr;gap:clamp(2rem,4vw,3.5rem);align-items:center}
   @media(min-width:820px){.founder-grid{grid-template-columns:.85fr 1.15fr}}
-  .founder-portrait{aspect-ratio:4/5;border-radius:12px;background:
-      radial-gradient(90% 80% at 30% 20%,color-mix(in srgb,var(--blush) 34%,var(--surface-2)),transparent 55%),
-      linear-gradient(160deg,var(--brand),var(--surface-2));box-shadow:var(--shadow);
-      display:grid;place-content:end start;padding:1.3rem}
-  .founder-portrait small{font-size:var(--step--1);letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 68%,transparent);font-weight:600}
+  .founder-portrait{aspect-ratio:4/5;border-radius:12px;
+      background-image:
+        url("https://static.wixstatic.com/media/f99bd2_90389617a0d6457a91de9161e6eac6b9~mv2.png/v1/fill/w_900,h_1125,al_c,q_85,enc_avif,quality_auto/f99bd2_90389617a0d6457a91de9161e6eac6b9~mv2.png"),
+        radial-gradient(90% 80% at 30% 20%,color-mix(in srgb,var(--blush) 34%,var(--surface-2)),transparent 55%),
+        linear-gradient(160deg,var(--brand),var(--surface-2));
+      background-size:cover;background-position:center top;box-shadow:var(--shadow);
+      display:grid;place-content:end start;padding:1.3rem;position:relative;overflow:hidden}
+  .founder-portrait::before{content:"";position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(20,17,14,.55),transparent 45%)}
+  .founder-portrait small{position:relative;font-size:var(--step--1);letter-spacing:.16em;text-transform:uppercase;color:#fff;font-weight:600}
   .pull{font-family:var(--serif);font-size:var(--step-2);line-height:1.25;font-style:italic;margin:0 0 1.5rem}
   .founder p{color:var(--muted);max-width:52ch}
   .sig{margin-top:1.5rem;font-family:var(--serif);font-size:1.4rem}
@@ -172,9 +202,17 @@
   .plate{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;
     display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
   .plate:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .plate-img{height:190px;background:linear-gradient(155deg,var(--surface-2),var(--brand))}
-  .plate:nth-child(2) .plate-img{background:linear-gradient(155deg,var(--brand),color-mix(in srgb,var(--blush) 40%,var(--surface-2)))}
-  .plate:nth-child(3) .plate-img{background:linear-gradient(155deg,var(--brand-deep),var(--surface-2))}
+  .plate-img{height:200px;background-size:cover;background-position:center;
+    background-image:linear-gradient(155deg,var(--surface-2),var(--brand))}
+  .plate:nth-child(1) .plate-img{background-image:
+    url("https://static.wixstatic.com/media/f99bd2_366a81dcfb064440ad714755fe394618~mv2.jpg/v1/fill/w_800,h_620,al_c,q_85,enc_avif,quality_auto/f99bd2_366a81dcfb064440ad714755fe394618~mv2.jpg"),
+    linear-gradient(155deg,var(--surface-2),var(--brand))}
+  .plate:nth-child(2) .plate-img{background-image:
+    url("https://static.wixstatic.com/media/f99bd2_85eac94a17de4c29825c6036e42fc72e~mv2.jpg/v1/fill/w_800,h_620,al_c,q_85,enc_avif,quality_auto/f99bd2_85eac94a17de4c29825c6036e42fc72e~mv2.jpg"),
+    linear-gradient(155deg,var(--brand),color-mix(in srgb,var(--blush) 40%,var(--surface-2)))}
+  .plate:nth-child(3) .plate-img{background-image:
+    url("https://static.wixstatic.com/media/f99bd2_458798a5a1ab4c67a1055b759a665dd8~mv2.jpg/v1/fill/w_800,h_620,al_c,q_85,enc_avif,quality_auto/f99bd2_458798a5a1ab4c67a1055b759a665dd8~mv2.jpg"),
+    linear-gradient(155deg,var(--brand-deep),var(--surface-2))}
   .plate-body{padding:1.5rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
   .plate h3{font-size:var(--step-1)}
   .plate p{margin:0;color:var(--muted);font-size:.96rem;flex:1}
@@ -233,6 +271,7 @@
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#founder">Our Founder</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Visit</a></li>
@@ -262,6 +301,21 @@
       </div>
     </div>
     <div class="hero-plate" role="img" aria-label="Warm, natural spa environment"></div>
+  </section>
+
+  <!-- Featured in -->
+  <section class="featured" aria-labelledby="featured-title">
+    <div class="wrap">
+      <p class="eyebrow" id="featured-title">Clients featured in</p>
+      <div class="logos">
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_e82987aba8ac4c739ab46038053f399b~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_e82987aba8ac4c739ab46038053f399b~mv2.png')"></div>
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_11009fc4d6664f3daa6bbafdcd29485a~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_11009fc4d6664f3daa6bbafdcd29485a~mv2.png')"></div>
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_797c8ca90ecd4d3dacec789c0f903f93~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_797c8ca90ecd4d3dacec789c0f903f93~mv2.png')"></div>
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_20986475700a4180b3807bcd8e5abfc6~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_20986475700a4180b3807bcd8e5abfc6~mv2.png')"></div>
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_c887055fba5448959729b021a08d8c14~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_c887055fba5448959729b021a08d8c14~mv2.png')"></div>
+        <div class="logo" role="img" aria-label="Press feature" style="background-image:url('https://static.wixstatic.com/media/f99bd2_6fb793f574b64bceb802a4ed2a4d57db~mv2.png/v1/fit/w_600,h_160,q_90,enc_avif,quality_auto/f99bd2_6fb793f574b64bceb802a4ed2a4d57db~mv2.png')"></div>
+      </div>
+    </div>
   </section>
 
   <!-- Services marquee -->
@@ -320,6 +374,25 @@
         </div>
       </article>
     </div>
+  </section>
+
+  <!-- Results gallery -->
+  <section class="wrap" id="results" aria-labelledby="results-title">
+    <div class="sec-head">
+      <p class="eyebrow">Real clients</p>
+      <h2 id="results-title" style="font-size:var(--step-2)">A look at the <em>work</em>.</h2>
+    </div>
+    <div class="gallery">
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_5011ff0f40664f628cd10ff84712e3f4~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_5011ff0f40664f628cd10ff84712e3f4~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_6b3b9d99de4940d6bb69b50b6983b03a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_5e4944d2f563421e89808e83670ad577~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_73c2da1b2d254888bb7023eda4a6ca63~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_c09953db4a61456487325a2f0a681e57~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_56b515f0fbf8480d8db41bad2e13c598~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_d982b45639a54f41b18f3b5c4786d15a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+      <div class="shot" role="img" aria-label="Client result" style="background-image:url('https://static.wixstatic.com/media/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg/v1/fill/w_760,h_860,al_c,q_85,enc_avif,quality_auto/f99bd2_32b7cc3b8bc346e59c9e91668a4c7d8a~mv2.jpg'),linear-gradient(160deg,var(--surface-2),var(--brand))"></div>
+    </div>
+    <p style="margin-top:1rem;font-size:.78rem;color:var(--muted)">Individual results vary. Photos shown are of real clients and models.</p>
   </section>
 
   <!-- Weight loss band -->
